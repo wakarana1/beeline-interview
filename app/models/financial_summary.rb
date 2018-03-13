@@ -17,7 +17,7 @@ class FinancialSummary
   def self.find_transaction(user_id, currency)
     Transaction.where(user_id: user_id,
                       amount_currency: currency,
-                      ).select(:amount_currency, :category)
+                      )
   end
 
 end
