@@ -1,5 +1,4 @@
 class Transaction < ApplicationRecord
-  # prepend CountTransactions
 
   monetize :amount_cents
 
