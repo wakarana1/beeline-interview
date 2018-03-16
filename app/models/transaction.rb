@@ -10,6 +10,10 @@ class Transaction < ApplicationRecord
   after_save :make_immutable
   after_find :make_immutable
 
+  def self.category_count(category)
+    where(category: category.to_s).size
+  end
+
   def self.amount(category)
     where(category: category.to_s).sum(&:amount)
   end

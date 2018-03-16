@@ -16,7 +16,7 @@ class FinancialSummary
 
   def self.find_transaction(user_id, currency)
     Transaction.where(user_id: user_id,
-                      amount_currency: currency.to_s.upcase,
+                      amount_currency: currency.to_s.upcase
                       )
   end
 

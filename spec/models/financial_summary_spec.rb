@@ -16,7 +16,7 @@ describe FinancialSummary do
     end
 
     subject = FinancialSummary.one_day(user: user, currency: :usd)
-    expect(subject.count(:deposit)).to eq(2)
+    expect(subject.category_count(:deposit)).to eq(2)
     expect(subject.amount(:deposit)).to eq(Money.from_amount(12.12, :usd))
   end
 
@@ -35,7 +35,7 @@ describe FinancialSummary do
     end
 
     subject = FinancialSummary.seven_days(user: user, currency: :usd)
-    expect(subject.count(:deposit)).to eq(2)
+    expect(subject.category_count(:deposit)).to eq(2)
     expect(subject.amount(:deposit)).to eq(Money.from_amount(12.12, :usd))
   end
 
@@ -54,7 +54,7 @@ describe FinancialSummary do
     end
 
     subject = FinancialSummary.lifetime(user: user, currency: :usd)
-    expect(subject.count(:deposit)).to eq(3)
+    expect(subject.category_count(:deposit)).to eq(3)
     expect(subject.amount(:deposit)).to eq(Money.from_amount(13.12, :usd))
   end
 end
