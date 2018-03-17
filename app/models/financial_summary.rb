@@ -1,12 +1,13 @@
 class FinancialSummary
 
   def self.one_day(user: user, currency: currency)
-    one_day_range = Date.today.beginning_of_day..Date.today.end_of_day
+    one_day_range = Time.now.beginning_of_day..Time.now.end_of_day
+    p one_day_range
     find_transaction(user.id, currency).where(created_at: one_day_range)
   end
 
   def self.seven_days(user: user, currency: currency)
-    seven_days_range = (Date.today.beginning_of_day - 7.days)..Date.today.end_of_day
+    seven_days_range = (Time.now.beginning_of_day - 7.days)..Time.now.end_of_day
     find_transaction(user.id, currency).where(created_at: seven_days_range)
   end
 

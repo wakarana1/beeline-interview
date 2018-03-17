@@ -26,4 +26,5 @@ describe Transaction do
     subject.amount = Money.from_amount(0.01, :usd)
     expect(subject.valid?).to eq(true)
   end
+
 end
