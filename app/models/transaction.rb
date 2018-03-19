@@ -1,5 +1,8 @@
 class Transaction < ApplicationRecord
 
+  scope :category_count, -> (category) { where(category: category.to_s).size }
+  scope :amount, -> (category) { where(category: category.to_s).sum(&:amount) }
+
   monetize :amount_cents
 
   validate :must_be_greater_than_zero
@@ -9,14 +12,6 @@ class Transaction < ApplicationRecord
 
   after_save :make_immutable
   after_find :make_immutable
-
-  def self.category_count(category)
-    where(category: category.to_s).size
-  end
-
-  def self.amount(category)
-    where(category: category.to_s).sum(&:amount)
-  end
 
   private
 
